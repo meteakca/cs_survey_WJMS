@@ -10,11 +10,12 @@
   library(interactions)
   library(tools)
   library(hrbrthemes)
+  library(ggthemes)
   library(jtools)
   
 #Impact of test and its interaction with Gender and Programming Extent: RQ1, 1a, 1b
 #RQ1: Does taking the test impact students' perceptions? No
-  df_ss %>%
+df_ss %>%
     pivot_longer(cols = contains("Mean_1"),
                  names_to = "Mot",
                  values_to = "Means") %>%
@@ -28,7 +29,7 @@
     theme_ipsum() +
     ggtitle("Impact of taking the test on motivation outcomes")
 
-  lm1 <- lm(Int_Mean_1R ~ Test, data = df_ss)
+ lm1 <- lm(Int_Mean_1R ~ Test, data = df_ss)
   summary(lm1)
   glance(lm1)
 
@@ -70,7 +71,7 @@
   export_summs(lm1a, lm1a2, lm1a3, to.file = "docx", file.name = "test.docx", pvals = TRUE)
 
 #RQ1b: Tests interaction with Programming Experience
-  df_ss %>%
+  p <- df_ss %>%
     pivot_longer(cols = contains("Mean_1"),
                  names_to = "Mot",
                  values_to = "Means") %>%
@@ -83,6 +84,7 @@
     ylab("Outcome Levels") +
     xlab("No Test Condition ------- Test Condition") +
     ggtitle("Interaction of Programming Extent and Test on \nMotivation Outcomes")
+
   
 #Regression for programming extent X test interaction
 #Interest not significant
