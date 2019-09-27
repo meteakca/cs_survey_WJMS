@@ -1,5 +1,5 @@
-#initiate
-  library(tidyr)
+#initiate the packages
+  library(tidyr)#
   library(ggplot2)
   library(tidyverse)
   library(RColorBrewer)
